@@ -1,21 +1,22 @@
 // TODO: We need the fields for Bandersnatch
 // use super::field_extension::{BLS12381PrimeField, Degree2ExtensionField};
  
-use crate::elliptic_curve::traits::IsEllipticCurve;
-use crate::elliptic_curve::short_weierstrass::point::ShortWeierstrassProjectivePoint;
-use crate::{
-    elliptic_curve::short_weierstrass::traits::IsShortWeierstrass, field::element::FieElement,
+use lambdaworks_math::elliptic_curve::traits::IsEllipticCurve;
+use lambdaworks_math::elliptic_curve::short_weierstrass::point::ShortWeierstrassProjectivePoint;
+use lambdaworks_math::{
+    elliptic_curve::short_weierstrass::traits::IsShortWeierstrass, field::element::FieldElement,
 };
+pub use crate::fq::FqField;
 
 // TODO: Took this from the BLS12-381 code, need to change
-pub type BLS12381FieldElement = FieldElement<BLS12381PrimeField>;
-pub type BLS12381TwistCurveFieldElement = FieldElement<Degree2ExtensionField>;
+pub type BLS12381FieldElement = FieldElement<FqField>;
+// pub type BLS12381TwistCurveFieldElement = FieldElement<Degree2ExtensionField>;
 
 #[derive(Clone, Debug)]
 pub struct BandersnatchCurve;
 
 impl IsEllipticCurve for BandersnatchCurve {
-    type BaseField = FieldElement;
+    type BaseField = BLS12381FieldElement;
     type PointRepresentation = ShortWeierstrassProjectivePoint<Self>;
 
     // Values are from https://github.com/arkworks-rs/curves/blob/5a41d7f27a703a7ea9c48512a4148443ec6c747e/ed_on_bls12_381_bandersnatch/src/curves/mod.rs#L120

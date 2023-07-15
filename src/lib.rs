@@ -41,3 +41,6 @@ mod fields;
 
 // pub use curves::*;
 pub use fields::*;
+
+mod curves;
+pub use curves::*;
