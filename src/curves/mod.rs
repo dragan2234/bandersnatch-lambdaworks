@@ -9,14 +9,14 @@ use lambdaworks_math::{
 pub use crate::fq::FqField;
 
 // TODO: Took this from the BLS12-381 code, need to change
-pub type BLS12381FieldElement = FieldElement<FqField>;
+pub type BaseBandersnatchFieldElement = FieldElement<FqField>;
 // pub type BLS12381TwistCurveFieldElement = FieldElement<Degree2ExtensionField>;
 
 #[derive(Clone, Debug)]
 pub struct BandersnatchCurve;
 
 impl IsEllipticCurve for BandersnatchCurve {
-    type BaseField = BLS12381FieldElement;
+    type BaseField = BaseBandersnatchFieldElement;
     type PointRepresentation = ShortWeierstrassProjectivePoint<Self>;
 
     // Values are from https://github.com/arkworks-rs/curves/blob/5a41d7f27a703a7ea9c48512a4148443ec6c747e/ed_on_bls12_381_bandersnatch/src/curves/mod.rs#L120
