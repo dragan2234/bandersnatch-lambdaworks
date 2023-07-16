@@ -7,9 +7,11 @@ use lambdaworks_math::{
     elliptic_curve::short_weierstrass::traits::IsShortWeierstrass, field::element::FieldElement,
 };
 pub use crate::fq::FqField;
+use crate::fq::FieldElementNewBase;
+
 
 // TODO: Took this from the BLS12-381 code, need to change
-pub type BaseBandersnatchFieldElement = FieldElement<FqField>;
+pub type BaseBandersnatchFieldElement = FqField;
 // pub type BLS12381TwistCurveFieldElement = FieldElement<Degree2ExtensionField>;
 
 #[derive(Clone, Debug)]
